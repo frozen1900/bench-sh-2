@@ -1,8 +1,7 @@
 #!/bin/bash
 #####################################################################
 # Benchmark Script 2 by Hidden Refuge from FreeVPS                  #
-# Copyright(C) 2015 - Hidden Refuge                                 #
-# License: GNU General Public License 3.0                           #
+# Copyright(C) 2015 - 2016 by Hidden Refuge                         #
 # Github: https://github.com/hidden-refuge/bench-sh-2               #
 #####################################################################
 # Original script by akamaras/camarg                                #
