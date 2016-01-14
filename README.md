@@ -1,6 +1,6 @@
 # bench-sh-2
 Benchmark Script Version 2<br /><br />
-Demo Output: http://pastebin.com/pNXGSrr8<br /><br /><br />
+Demo Output: http://pastebin.com/zqtBpZDU<br /><br /><br />
 <strong>Parameters</strong><br /><br />
 Help Page:<br />
 <code>./bench.sh -h</code><br /><br />
