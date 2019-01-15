@@ -106,23 +106,23 @@ speedtest6 () {
   	echo "" | tee -a $HOME/bench.log
   	echo "Location		Provider	Speed" | tee -a $HOME/bench.log
   	# United States speed test
-	v6atl=$( wget -6 -O /dev/null http://speedtest.atlanta.linode.com/100MB-atlanta.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
-	echo "Atlanta, GA, US		Linode		$v6atl" | tee -a $HOME/bench.log
-  	v6dal=$( wget -6 -O /dev/null http://speedtest.dallas.linode.com/100MB-dallas.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
-  	echo "Dallas, TX, US		Linode		$v6dal" | tee -a $HOME/bench.log
-  	v6new=$( wget -6 -O /dev/null http://speedtest.newark.linode.com/100MB-newark.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
-  	echo "Newark, NJ, US		Linode	 	$v6new" | tee -a $HOME/bench.log
-	v6fre=$( wget -6 -O /dev/null http://speedtest.fremont.linode.com/100MB-fremont.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
-	echo "Fremont, CA, US		Linode	 	$v6fre" | tee -a $HOME/bench.log
-  	v6chi=$( wget -6 -O /dev/null http://testfile.chi.steadfast.net/data.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
-  	echo "Chicago, IL, US		Steadfast	$v6chi" | tee -a $HOME/bench.log
-	echo "" | tee -a $HOME/bench.log
+	#v6atl=$( wget -6 -O /dev/null http://speedtest.atlanta.linode.com/100MB-atlanta.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
+	#echo "Atlanta, GA, US		Linode		$v6atl" | tee -a $HOME/bench.log
+  	#v6dal=$( wget -6 -O /dev/null http://speedtest.dallas.linode.com/100MB-dallas.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
+  	#echo "Dallas, TX, US		Linode		$v6dal" | tee -a $HOME/bench.log
+  	#v6new=$( wget -6 -O /dev/null http://speedtest.newark.linode.com/100MB-newark.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
+  	#echo "Newark, NJ, US		Linode	 	$v6new" | tee -a $HOME/bench.log
+	#v6fre=$( wget -6 -O /dev/null http://speedtest.fremont.linode.com/100MB-fremont.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
+	#echo "Fremont, CA, US		Linode	 	$v6fre" | tee -a $HOME/bench.log
+  	#v6chi=$( wget -6 -O /dev/null http://testfile.chi.steadfast.net/data.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
+  	#echo "Chicago, IL, US		Steadfast	$v6chi" | tee -a $HOME/bench.log
+	#echo "" | tee -a $HOME/bench.log
 	# Asia speed test
-  	v6tok=$( wget -6 -O /dev/null http://speedtest.tokyo.linode.com/100MB-tokyo.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
-  	echo "Tokyo, Japan		Linode	 	$v6tok" | tee -a $HOME/bench.log
-  	v6sin=$( wget -6 -O /dev/null http://speedtest.singapore.linode.com/100MB-singapore.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
-  	echo "Singapore		Linode		$v6sin" | tee -a $HOME/bench.log
-	echo "" | tee -a $HOME/bench.log
+  	#v6tok=$( wget -6 -O /dev/null http://speedtest.tokyo.linode.com/100MB-tokyo.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
+  	#echo "Tokyo, Japan		Linode	 	$v6tok" | tee -a $HOME/bench.log
+  	#v6sin=$( wget -6 -O /dev/null http://speedtest.singapore.linode.com/100MB-singapore.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
+  	#echo "Singapore		Linode		$v6sin" | tee -a $HOME/bench.log
+	#echo "" | tee -a $HOME/bench.log
 	# Europe speed test
 	v6fra=$( wget -6 -O /dev/null http://speedtest.frankfurt.linode.com/100MB-frankfurt.bin 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}' )
 	echo "Frankfurt, Germany	Linode		$v6fra" | tee -a $HOME/bench.log
@@ -137,9 +137,9 @@ iotest () {
 	echo "Disk Speed" | tee -a $HOME/bench.log
 	echo "----------" | tee -a $HOME/bench.log
 	# Measuring disk speed with DD
-	io=$( ( dd if=/dev/zero of=test_$$ bs=64k count=16k conv=fdatasync && rm -f test_$$ ) 2>&1 | awk -F, '{io=$NF} END { print io}' | sed 's/^[ \t]*//;s/[ \t]*$//' )
-	io2=$( ( dd if=/dev/zero of=test_$$ bs=64k count=16k conv=fdatasync && rm -f test_$$ ) 2>&1 | awk -F, '{io=$NF} END { print io}' | sed 's/^[ \t]*//;s/[ \t]*$//' )
-	io3=$( ( dd if=/dev/zero of=test_$$ bs=64k count=16k conv=fdatasync && rm -f test_$$ ) 2>&1 | awk -F, '{io=$NF} END { print io}' | sed 's/^[ \t]*//;s/[ \t]*$//' )
+	io=$( ( dd if=/dev/zero of=test_$$ bs=64k count=64k conv=fdatasync && rm -f test_$$ ) 2>&1 | awk -F, '{io=$NF} END { print io}' | sed 's/^[ \t]*//;s/[ \t]*$//' )
+	io2=$( ( dd if=/dev/zero of=test_$$ bs=64k count=64k conv=fdatasync && rm -f test_$$ ) 2>&1 | awk -F, '{io=$NF} END { print io}' | sed 's/^[ \t]*//;s/[ \t]*$//' )
+	io3=$( ( dd if=/dev/zero of=test_$$ bs=64k count=64k conv=fdatasync && rm -f test_$$ ) 2>&1 | awk -F, '{io=$NF} END { print io}' | sed 's/^[ \t]*//;s/[ \t]*$//' )
 	# Calculating avg I/O (better approach with awk for non int values)
 	ioraw=$( echo $io | awk 'NR==1 {print $1}' )
 	ioraw2=$( echo $io2 | awk 'NR==1 {print $1}' )
